@@ -1,9 +1,9 @@
-pipeline {
+ pipeline {
     agent any
     environment {
         GIT_CREDENTIALS = credentials('98e27194-d578-43bd-93fb-773de2f1e910')
         DOCKERHUB_TOKEN = credentials('dockerpat')
-        KUBECONFIG = credentials('kubeconfig_id')
+        //KUBECONFIG = credentials('kubeconfig_id')
     }
     stages {
         stage('Pull the project from GitHub') {
@@ -40,10 +40,5 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-             
-            cleanWs()
-        }
-    }
+     
 }
