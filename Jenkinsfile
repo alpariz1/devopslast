@@ -7,7 +7,7 @@ pipeline {
         //DOCKER_CLIENT_TIMEOUT = '300' // Set to 300 seconds
         //COMPOSE_HTTP_TIMEOUT = '300'  // Set to 300 seconds
     }
-    stages {
+    stages {a
         stage('Pull the project from GitHub') {
             steps {
                 echo 'Getting project from GitHub'
@@ -42,5 +42,12 @@ pipeline {
                 echo 'Image is pushed'
             }
         }
-    }
+        
+       stage('Pull the image from DockerHub') {
+            steps {
+                echo 'Pulling Docker image from DockerHub to local'
+                bat 'docker pull alpariz/app:latest'
+                echo 'Image is pulled'
+            }
+        }
 }
